@@ -2,16 +2,24 @@
 
 from flask import Flask, jsonify, abort, make_response, request, url_for, current_app, json
 import numpy as np
-
+import datetime
 
 app = Flask(__name__)
 
 route_root = '/api/v1.0/'
 
+def gen_data(now,i):
+    x = {'y_var':np.random.normal()}
+    date = now+datetime.timedelta(days=i)
+    date = date.strftime("%d-%b-%y")
+    x.update({'date':date})
+    return x
 
 @app.route(route_root + 'random', methods=['GET'])
 def random_normal():
-    x = {'x':list(np.random.normal(0,1,100))}
+    now = datetime.datetime.now()
+    x = [gen_data(now,i) for i in range(100)]
+    x = {'data':x}
     return jsonify(x)
 
 
