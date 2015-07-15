@@ -77,4 +77,4 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True)
     ## Test with:
     #  curl -H "Content-Type: application/json" -X POST -d '{"foo":"bar"}' localhost:5000/api/v1.0/echo
-    #  curl -H "Content-Type: application/jso" -X GET localhost:5000/api/v1.0/random
+    #  curl -H "Content-Type: application/json" -X GET localhost:5000/api/v1.0/random
